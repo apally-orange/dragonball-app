@@ -10,10 +10,10 @@ export function CharactersPage() {
         return <div>Loading...</div>
     }
 
-    return (<>
-        <h1>Home</h1>
-        <CharactersList items={data.data.items} />
-    </>
-
+    return (
+        <>
+            <h1>Characters</h1>
+            <CharactersList items={data.data.items} />
+        </>
     )
 }

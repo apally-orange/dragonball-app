@@ -1,11 +1,19 @@
-import { CharactersPage } from '@/pages/character_page';
-import { getAllCharactersQueryOptions } from '@/queries/all_character';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, Link } from '@tanstack/react-router';
+import './index.scss';
 
 export const Route = createFileRoute('/')({
-  component: CharactersPage,
-  loader: ({ context: { queryClient } }) =>
-    queryClient.fetchQuery(getAllCharactersQueryOptions()),
+  component: Dashboard,
 })
 
-
+function Dashboard() {
+  return (
+    <div className='dashboard'>
+      <h1>Dashboard</h1>
+      <ul className='list'>
+        <Link className='list-card' to='/characters/'>
+          Characters
+        </Link>
+      </ul>
+    </div>
+  )
+}
