@@ -1,4 +1,4 @@
-
+import './characters_list.scss';
 
 export function CharactersList({ items }: { items: Character[] }) {
 	return (
@@ -9,7 +9,7 @@ export function CharactersList({ items }: { items: Character[] }) {
 					key={character.id}
 				>
 					<h3>{character.name}</h3>
-					<img src={character.image} alt={character.name} width={100} />
+					<img src={character.image} alt={character.name} />
 				</li>
 			))}
 		</ul>
