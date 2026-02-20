@@ -3,7 +3,7 @@ import { getAllCharactersQueryOptions } from "@/queries/all-character"
 import { useSuspenseQuery } from "@tanstack/react-query"
 
 
-export function CharactersPage() {
+export function AllCharactersPage() {
     const data = useSuspenseQuery(getAllCharactersQueryOptions())
 
     if (!data) {

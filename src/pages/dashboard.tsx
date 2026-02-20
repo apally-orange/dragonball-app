@@ -4,10 +4,10 @@ import './dashboard.scss';
 export function Dashboard() {
     return (
         <div className='dashboard'>
-            <h1>Dashboard</h1>
+            <h1>Dashboard Dragon Ball</h1>
             <ul className='list'>
                 <Link className='list__card' to='/characters/'>
-                    Characters
+                    Personnages
                 </Link>
             </ul>
         </div>
