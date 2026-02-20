@@ -1,0 +1,6 @@
+@use 'colors';
+
+h1 {
+    text-align: center;
+    color: colors.$text-color;
+}

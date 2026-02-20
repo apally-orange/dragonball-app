@@ -1,12 +1,12 @@
+import '@/styles/style.scss';
 import { Link } from '@tanstack/react-router';
-import './characters-list.scss';
 
 export function CharactersList({ items }: { items: Character[] }) {
 	return (
 		<ul className='list'>
 			{items.map((character: Character) => (
 				<Link
-					className='list-card'
+					className='list__card'
 					key={character.id}
 					to={`/characters/${character.id}`}
 					params={{ characterId: character.id }}

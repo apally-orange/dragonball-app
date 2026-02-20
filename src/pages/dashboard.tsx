@@ -6,7 +6,7 @@ export function Dashboard() {
         <div className='dashboard'>
             <h1>Dashboard</h1>
             <ul className='list'>
-                <Link className='list-card' to='/characters/'>
+                <Link className='list__card' to='/characters/'>
                     Characters
                 </Link>
             </ul>
