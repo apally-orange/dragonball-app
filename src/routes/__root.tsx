@@ -1,3 +1,5 @@
+import { Error } from '@/components/error';
+import { Loading } from '@/components/loading';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
@@ -5,6 +7,8 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
+  errorComponent: () => <Error />,
+  pendingComponent: () => <Loading />,
 })
 
 export interface RouterContext {

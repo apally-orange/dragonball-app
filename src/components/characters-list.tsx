@@ -7,9 +7,9 @@ export function CharactersList({ items }: { items: Character[] }) {
 			{items.map((character: Character) => (
 				<Link
 					className='list__card'
-					key={character.id}
-					to={`/characters/${character.id}`}
-					params={{ characterId: character.id }}
+					key={`characters-${character.id}`}
+					to='/characters/$characterId'
+					params={{ characterId: character.id.toString() }}
 				>
 					<h3>{character.name}</h3>
 					<img src={character.image} alt={character.name} />

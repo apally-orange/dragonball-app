@@ -8,3 +8,11 @@ export async function getAllCharacters() {
 
     return result.data
 }
+
+export async function getCharacterById(characterId: string) {
+    const result = await Service.client.get<Character>(
+        'characters/' + characterId,
+    )
+
+    return result.data
+}

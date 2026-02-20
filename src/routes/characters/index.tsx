@@ -5,7 +5,8 @@ import { createFileRoute } from '@tanstack/react-router'
 export const Route = createFileRoute('/characters/')({
     component: AllCharactersPage,
     loader: ({ context: { queryClient } }) =>
-        queryClient.fetchQuery(getAllCharactersQueryOptions()),
+        queryClient.ensureQueryData(getAllCharactersQueryOptions()),
+    wrapInSuspense: true,
 })
 
 

@@ -1,4 +1,4 @@
-import { getCharacterById } from "@/services/character.api";
+import { getCharacterById } from "@/services/characters.api";
 import { queryOptions } from "@tanstack/react-query";
 
 
