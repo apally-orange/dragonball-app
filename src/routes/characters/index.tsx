@@ -1,5 +1,5 @@
-import { CharactersPage } from '@/pages/character_page'
-import { getAllCharactersQueryOptions } from '@/queries/all_character'
+import { CharactersPage } from '@/pages/character-page'
+import { getAllCharactersQueryOptions } from '@/queries/all-character'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/characters/')({

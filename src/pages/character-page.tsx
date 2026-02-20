@@ -1,5 +1,5 @@
-import { CharactersList } from "@/components/characters_list"
-import { getAllCharactersQueryOptions } from "@/queries/all_character"
+import { CharactersList } from "@/components/characters-list"
+import { getAllCharactersQueryOptions } from "@/queries/all-character"
 import { useSuspenseQuery } from "@tanstack/react-query"
 
 

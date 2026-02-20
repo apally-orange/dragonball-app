@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import './characters_list.scss';
+import './characters-list.scss';
 
 export function CharactersList({ items }: { items: Character[] }) {
 	return (
