@@ -1,27 +1,44 @@
-import { CharactersTable } from "@/components/characters-table"
-import { FooterPagination } from "@/components/footer-pagination"
+import { CharactersTable, DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from "@/components/table/characters-table"
+import { useFilters } from "@/hooks/useFilters"
 import { getAllCharactersQueryOptions } from "@/queries/all-character"
 import { useSuspenseQuery } from "@tanstack/react-query"
-import { useState } from "react"
-
-const initialPagination = { page: 0, limit: 10 }
+import { PaginationState, Updater } from "@tanstack/react-table"
 
 export function AllCharactersPage() {
-    const [pagination, setPagination] = useState({ pageIndex: initialPagination.page, pageSize: initialPagination.limit })
-    const data = useSuspenseQuery(getAllCharactersQueryOptions(pagination))
+    const { filters, setFilters } = useFilters("/characters/")
+    const data = useSuspenseQuery(getAllCharactersQueryOptions({
+        pageIndex: filters.pageIndex ?? DEFAULT_PAGE_INDEX,
+        pageSize: filters.pageSize ?? DEFAULT_PAGE_SIZE
+    }))
+
+    console.log("data", data)
 
     const { totalPages } = data.data.meta
     const allCharacters = data.data.items
 
+    const paginationState = {
+        pageIndex: filters.pageIndex ?? DEFAULT_PAGE_INDEX,
+        pageSize: filters.pageSize ?? DEFAULT_PAGE_SIZE,
+    };
+
+    const onPaginationChange = (pagination: Updater<PaginationState>) => {
+        setFilters(
+            typeof pagination === 'function'
+                ? pagination(paginationState)
+                : pagination,
+        )
+    }
+
     return (
         <>
             <h1>Characters</h1>
-            <CharactersTable items={allCharacters} />
-            <FooterPagination
-                pageIndex={pagination.pageIndex}
-                pageSize={pagination.pageSize}
+            <CharactersTable
+                items={allCharacters}
+                pagination={paginationState}
                 totalPages={totalPages}
-                setPagination={setPagination} />
+                onPaginationChange={onPaginationChange}
+            />
+
         </>
     )
 }

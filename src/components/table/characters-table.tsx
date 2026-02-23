@@ -4,10 +4,15 @@ import {
 	createColumnHelper,
 	flexRender,
 	getCoreRowModel,
-	getPaginationRowModel,
 	getSortedRowModel,
-	useReactTable
+	OnChangeFn,
+	useReactTable,
+	type PaginationState
 } from '@tanstack/react-table';
+import { FooterPagination } from './footer-pagination';
+
+export const DEFAULT_PAGE_INDEX = 0
+export const DEFAULT_PAGE_SIZE = 10
 
 const columnHelper = createColumnHelper<Character>()
 const columns = [
@@ -19,13 +24,20 @@ const columns = [
 ]
 
 
-export function CharactersTable({ items }: { items: Character[] }) {
+export function CharactersTable(
+	{ items, pagination, totalPages, onPaginationChange }:
+		{ items: Character[], pagination: PaginationState, totalPages?: number, onPaginationChange?: OnChangeFn<PaginationState> }
+) {
 	const table = useReactTable({
 		data: items,
 		columns: columns,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
-		getPaginationRowModel: getPaginationRowModel(),
+		manualFiltering: true,
+		manualPagination: true,
+		autoResetPageIndex: false,
+		onPaginationChange: onPaginationChange,
+		state: { pagination }
 	});
 
 	const navigate = useNavigate()
@@ -35,7 +47,6 @@ export function CharactersTable({ items }: { items: Character[] }) {
 			to: '/characters/$characterId',
 		})
 	}
-
 	return (
 		<table>
 			<thead>
@@ -85,6 +96,7 @@ export function CharactersTable({ items }: { items: Character[] }) {
 					</tr>
 				))}
 			</tbody>
+			<FooterPagination table={table} totalPages={totalPages} />
 		</table>
 	);
 }

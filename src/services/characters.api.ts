@@ -1,7 +1,8 @@
 
+import { DEFAULT_PAGE_INDEX, DEFAULT_PAGE_SIZE } from '@/components/table/characters-table'
 import { Service } from '@/services/service.ts'
 
-export async function getAllCharacters({ page = 1, limit = 10 }) {
+export async function getAllCharacters({ page = DEFAULT_PAGE_INDEX, limit = DEFAULT_PAGE_SIZE }) {
     const result = await Service.client.get<AllCharacters>(
         `characters?page=${page}&limit=${limit}`,
     )
