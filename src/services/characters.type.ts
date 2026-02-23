@@ -5,6 +5,10 @@ interface Character {
     name: string;
     image: string;
     description: string;
+    race: string;
+    gender: string;
+    affiliation: string;
+    ki: number;
 }
 
 interface AllCharacters {
