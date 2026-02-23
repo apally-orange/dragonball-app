@@ -5,7 +5,8 @@ export function Dashboard() {
         <div className='dashboard'>
             <h1>Dashboard Dragon Ball</h1>
             <ul className='list'>
-                <Link className='list__card' to='/characters'>
+                <Link className='list__card'
+                    to='/characters'>
                     Personnages
                 </Link>
             </ul>

@@ -6,7 +6,8 @@ export const Route = createFileRoute('/characters/$characterId')({
     component: RouteComponent,
     loader: async ({ params: { characterId }, context: { queryClient } }) => {
         return queryClient.ensureQueryData(getCharacterQueryOptions(characterId))
-    }
+    },
+    wrapInSuspense: true,
 })
 
 function RouteComponent() {

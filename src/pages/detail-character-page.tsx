@@ -5,10 +5,6 @@ import { useSuspenseQuery } from "@tanstack/react-query"
 export function DetailCharactersPage({ characterId }: { characterId: string }) {
     const data = useSuspenseQuery(getCharacterQueryOptions(characterId))
 
-    // if (!data) {
-    //     return <div>Loading...</div>
-    // }
-
     const character = data.data
 
     return (
