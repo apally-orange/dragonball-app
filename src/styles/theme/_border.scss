@@ -1,0 +1,10 @@
+@use 'colors';
+
+@mixin border($size: 0.25rem, $color: colors.$border-color, $style: solid) {
+  border: $size $style $color !important;
+}
+
+@mixin border-round-corner($size: 0, $color: colors.$border-color, $style: solid) {
+  @include border($size, $color, $style);
+  border-radius: 1rem;
+}

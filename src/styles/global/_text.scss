@@ -1,6 +1,15 @@
-@use 'colors';
+@use '/src/styles/theme/main' as utils;
 
 h1 {
     text-align: center;
-    color: colors.$text-color;
+    color: utils.$text-color;
+}
+
+a {
+    color: utils.$text-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
