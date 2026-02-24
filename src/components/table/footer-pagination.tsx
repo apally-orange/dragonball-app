@@ -1,5 +1,5 @@
 import { Table } from "@tanstack/react-table";
-
+import './characters-table.scss';
 
 interface TableFooterProps<TableData> {
     table: Table<TableData>
@@ -13,28 +13,25 @@ export function FooterPagination<TableData>(
     const table = props.table
 
     return (
-        <div
-            style={{
-                alignItems: 'center',
-                display: 'flex',
-                gap: '0.5rem',
-                marginTop: 12,
-            }}>
+        <div className="footer-pagination">
             <button
+                className="footer-pagination__button"
                 onClick={() => table.previousPage()}
                 disabled={!table.getCanPreviousPage()}>
                 Précédent
             </button>
-            <span>
+            <span className="footer-pagination__info">
                 Page {table.getState().pagination.pageIndex} sur {props.totalPages ?? table.getPageCount()}
             </span>
             <button
+                className="footer-pagination__button"
                 disabled={table.getState().pagination.pageIndex >= (props.totalPages ?? table.getPageCount())}
                 onClick={() => table.nextPage()}>
                 Suivant
             </button>
-            <span style={{ marginLeft: 'auto' }}>Afficher</span>
+            <span className="footer-pagination__label">Afficher</span>
             <select
+                className="footer-pagination__select"
                 value={table.getState().pagination.pageSize}
                 onChange={(e) => {
                     table.setPageSize(Number(e.target.value));

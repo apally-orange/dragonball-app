@@ -1,4 +1,5 @@
 import '@/styles/style.scss';
+import './characters-table.scss';
 import { useNavigate } from '@tanstack/react-router';
 import {
 	createColumnHelper,
@@ -48,7 +49,7 @@ export function CharactersTable(
 		})
 	}
 	return (
-		<table>
+		<table className="characters-table">
 			<thead>
 				{table.getHeaderGroups().map((headerGroup) => (
 					<tr key={headerGroup.id}>
@@ -60,12 +61,7 @@ export function CharactersTable(
 										? header.column.getToggleSortingHandler()
 										: undefined
 								}
-								style={{
-									borderBottom: '1px solid #ddd',
-									cursor: header.column.getCanSort() ? 'pointer' : 'default',
-									padding: '8px',
-									textAlign: 'left',
-								}}>
+								className={`characters-table__th ${header.column.getCanSort() ? 'sortable' : ''}`}>
 								{flexRender(
 									header.column.columnDef.header,
 									header.getContext(),
@@ -85,11 +81,9 @@ export function CharactersTable(
 
 			<tbody>
 				{table.getRowModel().rows.map((row) => (
-					<tr key={row.id} onClick={() => onRowClick(row.original)}>
+					<tr key={row.id} onClick={() => onRowClick(row.original)} className="characters-table__tr clickable">
 						{row.getVisibleCells().map((cell) => (
-							<td
-								key={cell.id}
-								style={{ borderBottom: '1px solid #eee', padding: '8px' }}>
+							<td key={cell.id} className="characters-table__td">
 								{flexRender(cell.column.columnDef.cell, cell.getContext())}
 							</td>
 						))}

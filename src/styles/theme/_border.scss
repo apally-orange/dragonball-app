@@ -8,3 +8,8 @@
   @include border($size, $color, $style);
   border-radius: 1rem;
 }
+
+%row-bordered {
+  border-bottom: 1px solid colors.$border-color;
+  padding: 8px;
+}

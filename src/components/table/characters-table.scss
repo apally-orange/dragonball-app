@@ -1,0 +1,68 @@
+@use '/src/styles/theme/main' as utils;
+
+.characters-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: inherit;
+
+	&__th {
+		@extend %row-bordered;
+		text-align: left;
+		font-weight: bold;
+
+		&.sortable {
+			cursor: pointer;
+			user-select: none;
+		}
+	}
+
+	&__td {
+		@extend %row-bordered;
+		vertical-align: top;
+	}
+
+	&__tr {
+		&.clickable { cursor: pointer; }
+		&:hover { background-color: rgba(0,0,0,0.1); }
+	}
+}
+
+.footer-pagination {
+	margin-top: 1.5rem;
+	display: flex;
+	align-items: center;
+    width: 100%;
+	gap: 1rem;
+
+	&__label {
+		margin-left: auto;
+		font-size: 0.9rem;
+		color: rgba(0,0,0,0.7);
+	}
+
+	&__info {
+		font-size: 0.95rem;
+		color: rgba(0,0,0,0.85);
+	}
+
+	&__button {
+		background: utils.$background-color;
+		border: 1px solid rgba(0,0,0,0.12);
+		padding: 6px 10px;
+		border-radius: 4px;
+		cursor: pointer;
+		font-size: 0.9rem;
+
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
+		}
+	}
+
+	&__select {
+		padding: 6px 8px;
+		border: 1px solid rgba(0,0,0,0.12);
+		border-radius: 4px;
+		background: white;
+	}
+}
