@@ -1,3 +1,4 @@
+import { Affiliation, Gender, Race } from '@/components/table/colums-def'
 import { AllCharactersPage } from '@/pages/all-characters-page'
 import { getAllCharactersQueryOptions } from '@/queries/all-character'
 import { PaginationParams } from '@/services/table.type'
@@ -8,9 +9,9 @@ const charactersParamsSchema = z.object({
     pageIndex: z.number().optional().default(1),
     pageSize: z.number().optional().default(10),
     name: z.string().optional(),
-    gender: z.string().optional(),
-    race: z.string().optional(),
-    affiliation: z.string().optional(),
+    gender: z.enum(Gender).optional(),
+    race: z.enum(Race).optional(),
+    affiliation: z.enum(Affiliation).optional(),
 })
 
 
@@ -28,7 +29,8 @@ export const Route = createFileRoute('/characters/')({
         queryClient.ensureQueryData(getAllCharactersQueryOptions({ filters: deps })),
     wrapInSuspense: true,
     validateSearch: charactersParamsSchema,
-
+    notFoundComponent: () => <div>Characters not found</div>,
+    errorComponent: ({ error }) => <div>Error: {error.message}</div>,
 })
 
 

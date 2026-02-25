@@ -7,10 +7,10 @@ import { PaginationState, Updater } from "@tanstack/react-table"
 export function AllCharactersPage() {
     const { filters, setFilters } = useFilters("/characters/")
 
-    const data = useSuspenseQuery(getAllCharactersQueryOptions({ filters: filters, }))
+    const { data } = useSuspenseQuery(getAllCharactersQueryOptions({ filters: filters, }))
 
-    const { totalPages } = data.data.meta
-    const allCharacters = data.data.items
+    const { totalPages } = data.meta
+    const allCharacters = data.items
 
     const onPaginationChange = (pagination: Updater<PaginationState>) => {
         setFilters(
@@ -29,8 +29,7 @@ export function AllCharactersPage() {
                 totalPages={totalPages}
                 filters={filters}
                 onPaginationChange={onPaginationChange}
-                onFilterChange={(filters) => setFilters(filters)
-                }
+                onFilterChange={setFilters}
             />
         </>
     )

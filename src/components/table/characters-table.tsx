@@ -61,7 +61,6 @@ export function CharactersTable({
 					{table.getHeaderGroups().map((headerGroup) => (
 						<tr key={headerGroup.id}>
 							{headerGroup.headers.map((header) => {
-
 								return (
 									<th
 										key={header.id}>

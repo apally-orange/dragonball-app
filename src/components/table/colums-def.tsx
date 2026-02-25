@@ -10,40 +10,40 @@ declare module "@tanstack/react-table" {
     }
 }
 
-export enum Race {
-    Saiyan = "Saiyan",
-    Namekian = "Namekian",
-    Majin = "Majin",
-    FriezaRace = "Frieza Race",
-    Android = "Android",
-    JirenRace = "Jiren Race",
-    God = "God",
-    Evil = "Evil",
-    Nucleico = "Nucleico",
-    NucleicoBenigno = "Nucleico benigno",
-    Unknown = "Unknown",
-}
+export const Race = {
+    Saiyan: "Saiyan",
+    Namekian: "Namekian",
+    Majin: "Majin",
+    FriezaRace: "Frieza Race",
+    Android: "Android",
+    JirenRace: "Jiren Race",
+    God: "God",
+    Evil: "Evil",
+    Nucleico: "Nucleico",
+    NucleicoBenigno: "Nucleico benigno",
+    Unknown: "Unknown",
+} as const
 
-export enum Gender {
-    Male = "Male",
-    Female = "Female",
-    Other = "Other",
-    Unknown = "Unknown",
-}
+export const Gender = {
+    Male: "Male",
+    Female: "Female",
+    Other: "Other",
+    Unknown: "Unknown",
+} as const
 
-export enum Affiliation {
-    ZFighter = "Z Fighter",
-    RedRibbonArmy = "Red Ribbon Army",
-    FriezaForce = "Frieza Force",
-    NamekianWarrior = "Namekian Warrior",
-    Freelancer = "Freelancer",
-    ArmyOfFrieza = "Army of Frieza",
-    PrideTroopers = "Pride Troopers",
-    AssistantOfVermoud = "Assistant of Vermoud",
-    AssistantOfBeerus = "Assistant of Beerus",
-    Villain = "Villain",
-    Other = "Other",
-}
+export const Affiliation = {
+    ZFighter: "Z Fighter",
+    RedRibbonArmy: "Red Ribbon Army",
+    FriezaForce: "Frieza Force",
+    NamekianWarrior: "Namekian Warrior",
+    Freelancer: "Freelancer",
+    ArmyOfFrieza: "Army of Frieza",
+    PrideTroopers: "Pride Troopers",
+    AssistantOfVermoud: "Assistant of Vermoud",
+    AssistantOfBeerus: "Assistant of Beerus",
+    Villain: "Villain",
+    Other: "Other",
+} as const
 
 const columnHelper = createColumnHelper<Character>()
 
