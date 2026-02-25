@@ -18,13 +18,12 @@ export function useFilters<
     const navigate = routeApi.useNavigate();
     const filters = routeApi.useSearch();
 
-    const setFilters = (partialFilters: Partial<TSearchParams>) =>
+    const setFilters = (partialFilters: Partial<TSearchParams>) => {
+        const cleanSearchFilters = cleanEmptyParams({ ...filters, ...partialFilters }) as TSearchParams
         navigate({
-            search: cleanEmptyParams({
-                ...filters,
-                ...partialFilters,
-            }) as TSearchParams,
+            search: cleanSearchFilters,
         });
+    }
 
     const resetFilters = () => navigate({ search: {} as TSearchParams });
 

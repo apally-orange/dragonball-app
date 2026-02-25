@@ -1,22 +1,31 @@
 import { AllCharactersPage } from '@/pages/all-characters-page'
 import { getAllCharactersQueryOptions } from '@/queries/all-character'
+import { PaginationParams } from '@/services/table.type'
 import { createFileRoute } from '@tanstack/react-router'
 import z from 'zod'
 
 const charactersParamsSchema = z.object({
     pageIndex: z.number().optional().default(1),
     pageSize: z.number().optional().default(10),
-    search: z.string().optional(),
+    name: z.string().optional(),
+    gender: z.string().optional(),
+    race: z.string().optional(),
+    affiliation: z.string().optional(),
 })
+
 
 export const Route = createFileRoute('/characters/')({
     component: AllCharactersPage,
     loaderDeps: ({ search }) => ({
         pageIndex: search.pageIndex,
         pageSize: search.pageSize,
-    }),
+        name: search.name,
+        gender: search.gender,
+        race: search.race,
+        affiliation: search.affiliation,
+    } as Partial<Character & PaginationParams>),
     loader: ({ context: { queryClient }, deps }) =>
-        queryClient.ensureQueryData(getAllCharactersQueryOptions(deps)),
+        queryClient.ensureQueryData(getAllCharactersQueryOptions({ filters: deps })),
     wrapInSuspense: true,
     validateSearch: charactersParamsSchema,
 

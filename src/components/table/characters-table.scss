@@ -16,6 +16,13 @@
 		}
 	}
 
+    &__filter {
+		min-height: 40px;
+		display: flex;
+		align-items: center;
+		padding-top: 0.5rem;
+	}
+
 	&__td {
 		@extend %row-bordered;
 		vertical-align: top;
@@ -33,6 +40,8 @@
 	align-items: center;
     width: 100%;
 	gap: 1rem;
+
+
 
 	&__label {
 		margin-left: auto;

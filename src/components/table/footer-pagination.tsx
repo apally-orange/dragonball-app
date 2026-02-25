@@ -17,7 +17,7 @@ export function FooterPagination<TableData>(
             <button
                 className="footer-pagination__button"
                 onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}>
+                disabled={table.getState().pagination.pageIndex === 1}>
                 Précédent
             </button>
             <span className="footer-pagination__info">
