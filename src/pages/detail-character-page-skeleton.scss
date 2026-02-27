@@ -1,0 +1,41 @@
+@use '/src/styles/theme/main' as utils;
+
+.detail-character-skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: utils.$page-padding;
+
+        &__title {
+            width: 150px;
+            height: 2rem;
+        }
+
+        &__body {
+            max-width: 1000px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 1rem;
+
+            &__image {
+                height: 500px;
+                width: 300px;
+                @include utils.border-round-corner(0.2rem);
+            }
+
+            &__description {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+
+                &__line{
+                    height: 2rem;
+                    width: 400px;
+                    gap: 1rem;
+                }
+            }
+    }
+}

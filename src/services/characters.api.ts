@@ -47,6 +47,9 @@ export async function getAllCharacters(
 }
 
 export async function getCharacterById(characterId: string) {
+    // Add wait 3s for simulate loading
+    await new Promise(resolve => setTimeout(resolve, 3000))
+
     const result = await Service.client.get<Character>(
         'characters/' + characterId,
     )
