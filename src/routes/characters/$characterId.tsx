@@ -4,6 +4,9 @@ import { getCharacterQueryOptions } from '@/queries/charater'
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/characters/$characterId')({
+    staticData: {
+        breadcrumb: (match) => `#${match.params.characterId}`,
+    },
     component: RouteComponent,
     beforeLoad: async ({ params }) => {
         const characterId = params.characterId

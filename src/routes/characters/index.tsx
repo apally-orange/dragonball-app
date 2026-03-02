@@ -16,6 +16,7 @@ const charactersParamsSchema = z.object({
 
 
 export const Route = createFileRoute('/characters/')({
+    staticData: { breadcrumb: "Characters" },
     component: AllCharactersPage,
     loaderDeps: ({ search }) => ({
         pageIndex: search.pageIndex,
