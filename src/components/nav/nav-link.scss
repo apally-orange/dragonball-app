@@ -1,0 +1,33 @@
+
+
+.nav-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.25rem 0.5rem;
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        padding: 0.25rem 0.5rem;
+        display: inline-block;
+    }
+
+    a[aria-current="page"] {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        font-weight: 600;
+    }
+}

@@ -1,7 +1,7 @@
 import { Filters } from "@/services/table.type";
 import { Header } from "@tanstack/react-table";
 import { useMemo } from "react";
-import { DebouncedInput } from "../DebouncedInput";
+import { DebouncedInput } from "../debounced-input";
 
 interface FilterHeaderProps {
     header: Header<Character, any>;

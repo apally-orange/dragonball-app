@@ -4,6 +4,7 @@ import { getAllCharactersQueryOptions } from "@/queries/all-character"
 import { useSuspenseQuery } from "@tanstack/react-query"
 import { PaginationState, Updater } from "@tanstack/react-table"
 
+// TODO améliorer l'affichage et ajout d'un personnage 
 export function AllCharactersPage() {
     const { filters, setFilters } = useFilters("/characters/")
 
