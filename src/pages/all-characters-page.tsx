@@ -7,7 +7,7 @@ import "./all-characters-page.scss"
 
 // TODO améliorer l'affichage 
 export function AllCharactersPage() {
-    const { filters, setFilters } = useFilters("/characters/")
+    const { filters, setFilters } = useFilters("/_app/characters/")
 
     const { data } = useSuspenseQuery(getAllCharactersQueryOptions({ filters: filters, }))
 

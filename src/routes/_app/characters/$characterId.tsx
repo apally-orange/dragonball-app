@@ -3,7 +3,7 @@ import { DetailCharactersSkeletonPage } from '@/pages/detail-character-page-skel
 import { getCharacterQueryOptions } from '@/queries/charater'
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
-export const Route = createFileRoute('/characters/$characterId')({
+export const Route = createFileRoute('/_app/characters/$characterId')({
     staticData: {
         breadcrumb: (match) => `#${match.params.characterId}`,
     },

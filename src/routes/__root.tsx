@@ -1,7 +1,5 @@
 import { Error } from '@/components/error';
 import { Loading } from '@/components/loading';
-import { SideNav } from '@/components/nav/side-nav';
-import { RouterBreadcrumb } from '@/navigation/router-breadcrumb';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import type { QueryClient } from '@tanstack/react-query';
 import { Outlet, createRootRouteWithContext } from '@tanstack/react-router';
@@ -21,24 +19,18 @@ export interface RouterContext {
 function RootComponent() {
   return (
     <>
-      <div className="app-layout">
-        <SideNav />
-        <div className="main-content">
-          <RouterBreadcrumb />
-          <Outlet />
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'TanStack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-            ]}
-          />
-        </div>
-      </div>
+      <Outlet />
+      <TanStackDevtools
+        config={{
+          position: 'bottom-right',
+        }}
+        plugins={[
+          {
+            name: 'TanStack Router',
+            render: <TanStackRouterDevtoolsPanel />,
+          },
+        ]}
+      />
     </>
   )
 }
