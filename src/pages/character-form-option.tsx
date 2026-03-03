@@ -18,7 +18,7 @@ export const characterFormOpts = formOptions({
 		description: '',
 	},
 	validators: {
-		onSubmitAsync: ({ value }) => {
+		onSubmit: ({ value }) => {
 			const errors = {
 				fields: {},
 			} as {

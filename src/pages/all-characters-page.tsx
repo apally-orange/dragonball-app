@@ -2,7 +2,6 @@ import { CharactersTable } from "@/components/table/characters-table"
 import { useFilters } from "@/hooks/useFilters"
 import { getAllCharactersQueryOptions } from "@/queries/all-character"
 import { useSuspenseQuery } from "@tanstack/react-query"
-import { Link } from "@tanstack/react-router"
 import { PaginationState, Updater } from "@tanstack/react-table"
 import "./all-characters-page.scss"
 
@@ -24,14 +23,8 @@ export function AllCharactersPage() {
     }
 
     return (
-        <>
-            <div className="all-characters-page__header">
-                <h1>Characters</h1>
-                <Link to='/characters/add' className="all-characters-page__header__add-button">
-                    Ajout Personage
-                </Link>
-            </div>
-
+        <div className="all-characters-page">
+            <h1>Personnages de Dragon Ball</h1>
             <CharactersTable
                 items={allCharacters}
                 pagination={filters}
@@ -40,6 +33,6 @@ export function AllCharactersPage() {
                 onPaginationChange={onPaginationChange}
                 onFilterChange={setFilters}
             />
-        </>
+        </div >
     )
 }

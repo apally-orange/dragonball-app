@@ -8,7 +8,7 @@ export function AddCharacterPage() {
     const navigate = useNavigate()
     const queryClient = useQueryClient()
 
-    const addCharacterMutation = useMutation({
+    const addCharacterMutation = useMutation<void, Error, Partial<Character>>({
         mutationFn: async (characterData) => {
             const response = await fetch('https://dummyjson.com/users/add', {
                 body: JSON.stringify(characterData),

@@ -2,13 +2,26 @@
 
 .characters-table {
 	width: 100%;
-	border-collapse: collapse;
+	overflow-x: auto;
 	font-family: inherit;
 
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		table-layout: auto;
+	}
+
+	th {
+		padding: 0;
+		margin: 0;
+	}
+	
 	&__th {
 		@extend %row-bordered;
 		text-align: left;
 		font-weight: bold;
+		background: #C5C5C5;
+		
 
 		&.sortable {
 			cursor: pointer;
@@ -16,21 +29,68 @@
 		}
 	}
 
-    &__filter {
-		min-height: 40px;
-		display: flex;
-		align-items: center;
-		padding-top: 0.5rem;
-	}
-
 	&__td {
 		@extend %row-bordered;
 		vertical-align: top;
+		background: white;
 	}
 
 	&__tr {
 		&.clickable { cursor: pointer; }
 		&:hover { background-color: rgba(0,0,0,0.1); }
+	}
+
+	&__filters-bar {
+		display: flex;
+		margin-bottom: 0.5rem;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		&-left {
+			display: flex;
+			gap: 1rem;
+
+			&-filter-button {
+				padding: 6px 10px;
+				border-radius: 4px;
+				color: utils.$text-color;
+				background: utils.$background-color;
+				border: 1px solid rgba(0,0,0,0.12);
+
+				.filters-icon {
+					display: inline-block;
+					width: 16px;
+					height: 16px;
+					margin-right: 8px;
+					vertical-align: middle;
+					color: inherit;
+				}
+			}
+
+			input {
+				min-width: 400px;
+				padding: 6px 10px;
+				border-radius: 4px;
+				border: 1px solid rgba(0,0,0,0.12);
+			}
+		}
+
+		&-filters {
+			display: flex;
+			width: fit-content;
+			gap: 1rem;
+			transition: all 0.3s ease;
+			margin-bottom: 1rem;
+		}
+
+		&-add-button {
+			padding: 6px 10px;
+			border-radius: 4px;
+			background: utils.$button-color;
+			border: none;
+			color: utils.$button-text-color;
+		}
 	}
 }
 
@@ -40,8 +100,6 @@
 	align-items: center;
     width: 100%;
 	gap: 1rem;
-
-
 
 	&__label {
 		margin-left: auto;

@@ -54,9 +54,15 @@ export function CharactersTable({
 			to: '/characters/$characterId',
 		})
 	}
+	const props = {
+		filters,
+		onFilterChange,
+	}
+
 	return (
-		<>
-			<table className="characters-table">
+		<div className="characters-table">
+			<FilterHeader {...props} table={table} />
+			<table>
 				<thead>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<tr key={headerGroup.id}>
@@ -83,11 +89,6 @@ export function CharactersTable({
 													: ''
 												: null}
 										</div>
-										<FilterHeader
-											header={header}
-											filters={filters}
-											onFilterChange={onFilterChange}
-										/>
 									</th>
 								)
 							})}
@@ -108,6 +109,6 @@ export function CharactersTable({
 				</tbody>
 			</table>
 			<FooterPagination table={table} totalPages={totalPages} />
-		</>
+		</div >
 	);
 }
