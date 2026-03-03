@@ -1,5 +1,6 @@
-import { AnyRouteMatch, Link, useMatches } from "@tanstack/react-router";
-import { ChevronRight } from "lucide-react";
+import { AnyRouteMatch, Link, useRouterState } from "@tanstack/react-router";
+import { FaChevronRight } from "react-icons/fa6";
+
 
 export type BreadcrumbValue =
   | string
@@ -12,7 +13,7 @@ type ResolvedBreadcrumbItem = {
 };
 
 export function RouterBreadcrumb() {
-  const matches = useMatches();
+  const matches = useRouterState({ select: (s) => s.matches })
 
   console.log("matches:", matches);
 
@@ -54,10 +55,10 @@ export function RouterBreadcrumb() {
               </span>
             ) : (
               <>
-                <Link className='breadcrumb__link' to={crumb.path}>
+                <Link className='breadcrumb__item__link' to={crumb.path}>
                   {crumb.label}
                 </Link>
-                <ChevronRight />
+                <FaChevronRight />
               </>
             )}
           </span>

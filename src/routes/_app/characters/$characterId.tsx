@@ -5,7 +5,7 @@ import { createFileRoute, notFound } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_app/characters/$characterId')({
     staticData: {
-        breadcrumb: (match) => `#${match.params.characterId}`,
+        breadcrumb: (match) => ['Characters', `#${match.params.characterId}`],
     },
     component: RouteComponent,
     beforeLoad: async ({ params }) => {

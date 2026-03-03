@@ -1,0 +1,24 @@
+
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--foreground);
+
+    &__item {
+        display: flex;
+        gap: 0.5rem;
+
+        &__link {
+            text-decoration: none;
+            color: inherit;
+            padding: 0.25rem 0.5rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    
+}
