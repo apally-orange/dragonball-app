@@ -3,6 +3,7 @@ import React from "react";
 import "./nav-link.scss";
 
 interface NavLinkProps {
+    isReduced?: boolean;
     pathIcon: string;
     children: React.ReactNode;
 }
@@ -11,7 +12,7 @@ const NavLink = React.forwardRef<HTMLAnchorElement, NavLinkProps>((props, ref) =
     <div className="nav-link">
         <img className="nav-link__icon" src={props.pathIcon} />
         <a ref={ref} {...props} className="nav-link__text">
-            {props.children}
+            {props.isReduced ? null : props.children}
         </a>
     </div>
 ));

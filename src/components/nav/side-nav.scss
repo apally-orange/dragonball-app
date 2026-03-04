@@ -1,6 +1,8 @@
 .side-nav {
 	display: flex;
 	flex-direction: column;
+    min-width: 15%;
+    max-width: 25%;
 	gap: 1rem;
 	padding: 1.5rem 1rem;
 	border-right: 1px solid rgba(0,0,0,0.08);
@@ -9,6 +11,15 @@
 	overflow-y: auto;
 
 
+    &--reduced {
+        min-width: 2rem;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: flex-end;
+    }
+
     &__list{
         display: flex;
         flex-direction: column;
@@ -16,6 +27,10 @@
         list-style: none;
         padding: 0;
         margin: 0;
+
+        &--reduced {
+            align-items: center;
+        }
     }
 }
 
