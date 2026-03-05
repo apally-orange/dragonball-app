@@ -1,3 +1,4 @@
+import { affiliationOptions, genderOptions, raceOptions } from '@/components/table/colums-def'
 import { formOptions } from '@tanstack/react-form'
 import z from 'zod'
 
@@ -9,6 +10,15 @@ export const characterSchema = z.object({
 		.string()
 		.min(3, { message: 'Name must be at least 3 characters' }),
 	description: z.string().min(1, { message: 'Description is required' }),
+	race: z.enum(raceOptions.map((option) => option.value) as [string, ...string[]], {
+		message: 'Please select a valid family',
+	}),
+	gender: z.enum(genderOptions.map((option) => option.value) as [string, ...string[]], {
+		message: 'Please select a valid gender',
+	}),
+	affiliation: z.enum(affiliationOptions.map((option) => option.value) as [string, ...string[]], {
+		message: 'Please select a valid affiliation',
+	}),
 })
 
 export const characterFormOpts = formOptions({
@@ -16,6 +26,9 @@ export const characterFormOpts = formOptions({
 		imageUrl: '',
 		name: '',
 		description: '',
+		race: '',
+		gender: '',
+		affiliation: '',
 	},
 	validators: {
 		onSubmit: ({ value }) => {

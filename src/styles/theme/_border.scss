@@ -9,6 +9,11 @@
   border-radius: 1rem;
 }
 
+@mixin input-round-corner($size: 0, $color: colors.$border-color, $style: solid) {
+  @include border($size, $color, $style);
+  border-radius: 0.5rem;
+}
+
 %row-bordered {
   border-bottom: 1px solid colors.$border-color;
   padding: 8px;

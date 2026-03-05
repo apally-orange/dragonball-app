@@ -1,8 +1,9 @@
+import { affiliationOptions, genderOptions, raceOptions } from "@/components/table/colums-def"
 import { useAppForm } from "@/hooks/form"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useNavigate } from "@tanstack/react-router"
+import "./add-character.scss"
 import { characterFormOpts, characterSchema } from "./character-form-option"
-
 
 export function AddCharacterPage() {
     const navigate = useNavigate()
@@ -44,49 +45,61 @@ export function AddCharacterPage() {
     })
 
     return (
-        <div>
+        <div className="add-character">
             <h1>Ajout d'un Personage</h1>
             <form
-                className='form'
+                className='add-character__form'
                 name='character'
                 onSubmit={(e) => {
                     e.preventDefault()
                     e.stopPropagation()
                     form.handleSubmit()
                 }}>
-                <form.AppField name='name'>
-                    {(field) => <field.TextField label='Nom' />}
-                </form.AppField>
-                <form.AppField name='imageUrl'>
-                    {(field) => <field.TextField label="URL de l'image" />}
-                </form.AppField>
-                <form.AppField name='description'>
-                    {(field) => <field.TextField label='Description' />}
-                </form.AppField>
-                <form.Subscribe
-                    selector={(state) => [state.isSubmitting]}>
-                    {([isSubmitting]) => (
-                        <div className='buttonContainer'>
-                            <button
-                                className='button submitButton'
-                                disabled={isSubmitting}
-                                type='submit'>
-                                {isSubmitting ? '...' : 'Submit'}
-                            </button>
-                            <button
-                                className='button resetButton'
-                                onClick={(e) => {
-                                    // Avoid unexpected resets of form elements (especially <select> elements)
-                                    e.preventDefault()
-                                    form.reset()
-                                }}
-                                type='reset'>
-                                Reset
-                            </button>
-                        </div>
-                    )}
-                </form.Subscribe>
+                <div className="add-character__form__field">
+                    <form.AppField name='name'>
+                        {(field) => <field.TextField label='Nom' />}
+                    </form.AppField>
+                    <form.AppField name='imageUrl'>
+                        {(field) => <field.TextField label="URL de l'image" />}
+                    </form.AppField>
+                    <form.AppField name='description'>
+                        {(field) => <field.TextField label='Description' />}
+                    </form.AppField>
+                    <form.AppField name='race'>
+                        {(field) => <field.Selector
+                            label='Famille'
+                            options={raceOptions}>
+                        </field.Selector>}
+                    </form.AppField>
+                    <form.AppField name='gender'>
+                        {(field) => <field.Selector
+                            label='Genre'
+                            options={genderOptions}>
+                        </field.Selector>}
+                    </form.AppField>
+                    <form.AppField name='affiliation'>
+                        {(field) => <field.Selector
+                            label='Affiliation'
+                            options={affiliationOptions}>
+                        </field.Selector>}
+                    </form.AppField>
+                </div>
+                <div className="add-character__form__action">
+                    <form.Subscribe
+                        selector={(state) => [state.isSubmitting]}>
+                        {([isSubmitting]) => (
+                            <div className='buttonContainer'>
+                                <button
+                                    className='button submitButton'
+                                    disabled={isSubmitting}
+                                    type='submit'>
+                                    {isSubmitting ? '...' : 'Ajouter'}
+                                </button>
+                            </div>
+                        )}
+                    </form.Subscribe>
+                </div>
             </form>
-        </div>
+        </div >
     )
 }

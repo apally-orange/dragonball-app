@@ -1,3 +1,4 @@
+import { Selector } from '@/components/selector.tsx'
 import { createFormHook } from '@tanstack/react-form'
 import { lazy } from 'react'
 import { fieldContext, formContext, useFormContext } from './form-context.tsx'
@@ -16,6 +17,7 @@ function SubscribeButton({ label }: { label: string }) {
 export const { useAppForm, withForm, withFieldGroup } = createFormHook({
 	fieldComponents: {
 		TextField,
+		Selector,
 	},
 	fieldContext,
 	formComponents: {

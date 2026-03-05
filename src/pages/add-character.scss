@@ -1,0 +1,61 @@
+@use "/src/styles/theme/main" as utils;
+
+.add-character {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+
+    h1 {
+        align-self: flex-start;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        &__field {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                input, select {
+                    padding: 0.5rem;
+                    font-size: 1rem;
+                    @include utils.input-round-corner(0.1rem);
+                }
+
+                /* Style when field has validation errors */
+                input[aria-invalid="true"] {
+                    @include utils.input-round-corner(0.1rem, #e53e3e);
+                }
+
+                
+            }
+        }
+
+        
+        &__action {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            align-self: flex-end;
+            
+            button {
+                padding: 0.75rem;
+                font-size: 1rem;
+                background-color: utils.$primary-color;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}

@@ -10,18 +10,20 @@ export default function TextField({ label }: { label: string }) {
     return (
         <div>
             <label>
-                <div>{label}</div>
+                {label}
                 <input
+                    {...(errors.length > 0 ? { 'aria-invalid': true } : {})}
                     onBlur={field.handleBlur}
                     onChange={(e) => field.handleChange(e.target.value)}
                     value={field.state.value}
                 />
+                {errors.map((error: string) => (
+                    <div key={error} style={{ color: 'red' }}>
+                        {error}
+                    </div>
+                ))}
             </label>
-            {errors.map((error: string) => (
-                <div key={error} style={{ color: 'red' }}>
-                    {error}
-                </div>
-            ))}
+
         </div>
     )
 }
